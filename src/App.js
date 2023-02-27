@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
+import Login from './Login/Login';
+import ChatApp from './Chat/ChatApp';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
+
+    this.handleLoggedIn = this.handleLoggedIn.bind(this);
+  }
+
+  handleLoggedIn() {
+    this.setState({
+      loggedIn: true
+    });
+  }
+
+  render() {
+    if (this.state.loggedIn) {
+      return (
+        <ChatApp></ChatApp>
+      );
+    }
+  
+    return (
+      <div className="test">
+        <Login loginCallback={this.handleLoggedIn}></Login>
+      </div>
+    );
+  }
 }
 
 export default App;
