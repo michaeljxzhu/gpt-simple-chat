@@ -35,14 +35,7 @@ class BackendSingleton {
             }
           }).catch(err => {
             console.log('http err: ' + err);
-            // for now, just login b/c we have no endpoint
-            if (username === 'test' && password === '123') {
-                this.username = username;
-                this.password = password;
-                successCallback();
-            } else {
-                errorCallback();
-            }
+            errorCallback();
           });
     }
 
