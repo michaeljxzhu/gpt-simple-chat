@@ -3,6 +3,7 @@ import BackendSingleton from '../Backend/Backend';
 import Messages from './Messages';
 import ChatInput from './ChatInput';
 import './ChatApp.css';
+import { v4 as uuidv4 } from 'uuid';
 
 class ChatApp extends React.Component {
     constructor(props) {
@@ -12,6 +13,9 @@ class ChatApp extends React.Component {
       this.sendHandler = this.sendHandler.bind(this);
       this.handleGPTMessage = this.handleGPTMessage.bind(this);
       this.handleGPTMessageErr = this.handleGPTMessageErr.bind(this);
+
+      // this will serve to create a new 'thread' every time
+      this.chatUUID = uuidv4();
     }
   
     sendHandler(message) {
@@ -26,6 +30,7 @@ class ChatApp extends React.Component {
         // send the message to the server and get a response
         this.backend.getGPTResponse(
             message,
+            this.chatUUID,
             this.handleGPTMessage,
             this.handleGPTMessageErr
         )

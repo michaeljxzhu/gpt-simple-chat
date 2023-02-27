@@ -45,7 +45,7 @@ class BackendSingleton {
           });
     }
 
-    getGPTResponse(userMessage, successCallback, errorCallback) {
+    getGPTResponse(userMessage, conversationIdentifier, successCallback, errorCallback) {
         const base64encodedData = btoa(`${this.username}:${this.password}`).toString('base64');
         fetch(
             this.serverURL + '/chat',
@@ -53,7 +53,10 @@ class BackendSingleton {
                 method:'POST',
                 mode: 'no-cors',
                 headers: {'Content-Type': 'application/json','Authorization': `Basic ${base64encodedData}`},
-                body: {'message': userMessage}
+                body: {
+                    'message': userMessage,
+                    'conversationIdentifier': conversationIdentifier
+                }
             }
         ).then(
             response=>response.json()
@@ -70,7 +73,8 @@ class BackendSingleton {
     }
 
     logoutUser() {
-
+        this.username = ''
+        this.password = ''
     }
 }
 
