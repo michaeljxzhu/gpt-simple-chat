@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/gpt-simple-chat/static/css/main.ed380aeb.css",
-    "main.js": "/gpt-simple-chat/static/js/main.d5915f20.js",
+    "main.js": "/gpt-simple-chat/static/js/main.4b4625a1.js",
     "static/js/787.f032b23c.chunk.js": "/gpt-simple-chat/static/js/787.f032b23c.chunk.js",
     "index.html": "/gpt-simple-chat/index.html",
     "main.ed380aeb.css.map": "/gpt-simple-chat/static/css/main.ed380aeb.css.map",
-    "main.d5915f20.js.map": "/gpt-simple-chat/static/js/main.d5915f20.js.map",
+    "main.4b4625a1.js.map": "/gpt-simple-chat/static/js/main.4b4625a1.js.map",
     "787.f032b23c.chunk.js.map": "/gpt-simple-chat/static/js/787.f032b23c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ed380aeb.css",
-    "static/js/main.d5915f20.js"
+    "static/js/main.4b4625a1.js"
   ]
 }
