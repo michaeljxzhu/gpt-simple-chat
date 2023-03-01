@@ -57,8 +57,12 @@ class BackendSingleton {
             console.log('responseBody status: ' + responseBody.status);
             if (responseBody['status'] === 200) {
                 successCallback(responseBody.body);
+
+            } else if (responseBody['status'] === 401) {
+                errorCallback('Error! Need openai api key: ' + responseBody.body);
+
             } else {
-                errorCallback('Error with response: ' + responseBody);
+                errorCallback('Error with response: ' + responseBody.body);
             }
         }).catch(err => {
             errorCallback('Error: ' + err);
