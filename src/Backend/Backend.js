@@ -3,6 +3,7 @@ import { Buffer } from 'buffer';
 class BackendSingleton {
 
     serverURL = 'https://streamerai-production.up.railway.app';
+    // serverURL = 'http://127.0.0.1:5000/';
     username = '';
     password = '';
 
@@ -39,7 +40,7 @@ class BackendSingleton {
           });
     }
 
-    getGPTResponse(userMessage, conversationIdentifier, successCallback, errorCallback) {
+    getGPTResponse(userMessage, conversationIdentifier, retrievalMethod, successCallback, errorCallback) {
         const base64encodedData = Buffer.from(this.username + ':' + this.password).toString('base64');
         fetch(
             this.serverURL + '/chat',
@@ -48,7 +49,8 @@ class BackendSingleton {
                 headers: {'Content-Type': 'application/json','Authorization': `Basic ${base64encodedData}`},
                 body: JSON.stringify({
                     'message': userMessage,
-                    'conversationIdentifier': conversationIdentifier
+                    'conversationIdentifier': conversationIdentifier,
+                    'retrievalMethod': retrievalMethod
                 })
             }
         ).then(r =>  r.json().then(data => ({status: r.status, body: data.message})))
